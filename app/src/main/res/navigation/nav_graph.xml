@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startingFragment">
+
+    <fragment
+        android:id="@+id/startingFragment"
+        android:name="skrla.githubrestapi.ui.fragments.StartingFragment"
+        android:label="fragment_starting"
+        tools:layout="@layout/fragment_starting" >
+        <action
+            android:id="@+id/action_startingFragment_to_userDataFragment"
+            app:destination="@id/userDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDataFragment"
+        android:name="skrla.githubrestapi.ui.fragments.UserDataFragment"
+        android:label="fragment_user_data"
+        tools:layout="@layout/fragment_user_data" >
+        <action
+            android:id="@+id/action_userDataFragment_to_startingFragment"
+            app:destination="@id/startingFragment" />
+    </fragment>
+</navigation>
