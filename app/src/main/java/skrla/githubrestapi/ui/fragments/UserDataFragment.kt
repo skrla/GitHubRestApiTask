@@ -11,7 +11,7 @@ import skrla.githubrestapi.viewmodels.UserViewModel
 
 class UserDataFragment : Fragment() {
 
-    private val viewModel: UserViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
 
     private var _binding: FragmentUserDataBinding? = null
     private val binding get() = _binding!!
@@ -24,7 +24,7 @@ class UserDataFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        binding.userDataFragment = viewModel
+        binding.userDataFragment = userViewModel
 
         return binding.root
     }
