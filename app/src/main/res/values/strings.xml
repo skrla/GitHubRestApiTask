@@ -9,4 +9,6 @@
     <string name="company_info">Company:</string>
     <string name="location_info">Location:</string>
     <string name="email_info">Email:</string>
+    <string name="followers_info">Followers:</string>
+    <string name="following_info">Following:</string>
 </resources>
