@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import skrla.githubrestapi.databinding.FragmentUserDataBinding
+import skrla.githubrestapi.ui.adapters.FollowersAdapter
+import skrla.githubrestapi.ui.adapters.FollowingAdapter
+import skrla.githubrestapi.ui.adapters.GitRepositoryAdapter
 import skrla.githubrestapi.viewmodels.UserViewModel
 
 class UserDataFragment : Fragment() {
 
-    private val userViewModel: UserViewModel by viewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     private var _binding: FragmentUserDataBinding? = null
     private val binding get() = _binding!!
@@ -22,9 +25,13 @@ class UserDataFragment : Fragment() {
     ): View? {
         _binding = FragmentUserDataBinding.inflate(inflater)
 
-        binding.lifecycleOwner = this
-
-        binding.userDataFragment = userViewModel
+        binding.let {
+            it.lifecycleOwner = this
+            it.userDataFragment = userViewModel
+            it.followersRecyclerView.adapter = FollowersAdapter()
+            it.followingRecyclerView.adapter = FollowingAdapter()
+            it.repositoryRecyclerView.adapter = GitRepositoryAdapter()
+        }
 
         return binding.root
     }

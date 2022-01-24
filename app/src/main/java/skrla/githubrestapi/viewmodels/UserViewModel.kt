@@ -2,69 +2,48 @@ package skrla.githubrestapi.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import skrla.githubrestapi.data.models.DBGithubUser
-import skrla.githubrestapi.repository.RepositoryUserApi
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import skrla.githubrestapi.data.api.UserApi
+import skrla.githubrestapi.data.models.FollowersApiData
+import skrla.githubrestapi.data.models.FollowingApiData
+import skrla.githubrestapi.data.models.GitRepositoryApiData
+import skrla.githubrestapi.data.models.GithubUserApiData
+import skrla.githubrestapi.databinding.FragmentUserDataBinding
 
 class UserViewModel : ViewModel() {
 
-    private val _githubUser: MutableLiveData<String> = MutableLiveData()
+    private var _binding: FragmentUserDataBinding? = null
+    private val binding get() = _binding!!
 
-    val githubUser: LiveData<DBGithubUser> = Transformations.switchMap(_githubUser) { username ->
-        RepositoryUserApi.getUserInfo(username)
+    private val _githubUserApiData: MutableLiveData<GithubUserApiData> =
+        MutableLiveData<GithubUserApiData>()
+    val githubUserApiData: LiveData<GithubUserApiData> = _githubUserApiData
 
-    }
+    private val _followersApi: MutableLiveData<List<FollowersApiData>> =
+        MutableLiveData<List<FollowersApiData>>()
+    val followersApi: LiveData<List<FollowersApiData>> = _followersApi
 
-    private val _username: MutableLiveData<String> = MutableLiveData()
-    val username: LiveData<String> get() = _username
+    private val _followingApi: MutableLiveData<List<FollowingApiData>> =
+        MutableLiveData<List<FollowingApiData>>()
+    val followingApi: LiveData<List<FollowingApiData>> = _followingApi
 
-    private val _profilePic: MutableLiveData<String> = MutableLiveData()
-    val profilePic: LiveData<String> get() = _profilePic
-
-    private val _userGitApi: MutableLiveData<String> = MutableLiveData()
-    val userGitApi: LiveData<String> get() = _userGitApi
-
-    private val _followers: MutableLiveData<String> = MutableLiveData()
-    val followers: LiveData<String> get() = _followers
-
-    private val _following: MutableLiveData<String> = MutableLiveData()
-    val following: LiveData<String> get() = _following
-
-    private val _organizations: MutableLiveData<String> = MutableLiveData()
-    val organizations: LiveData<String> get() = _organizations
-
-    private val _repositories: MutableLiveData<String> = MutableLiveData()
-    val repositories: LiveData<String> get() = _repositories
-
-    private val _realName: MutableLiveData<String> = MutableLiveData()
-    val realName: LiveData<String> get() = _realName
-
-    private val _company: MutableLiveData<String> = MutableLiveData()
-    val company: LiveData<String> get() = _company
-
-    private val _location: MutableLiveData<String> = MutableLiveData()
-    val location: LiveData<String> get() = _location
-
-    private val _email: MutableLiveData<String> = MutableLiveData()
-    val email: LiveData<String> get() = _email
-
-    private val _hireable: MutableLiveData<Boolean> = MutableLiveData()
-    val hireAble: LiveData<Boolean> get() = _hireable
-
-    private val _bio: MutableLiveData<String> = MutableLiveData()
-    val bio: LiveData<String> get() = _bio
-
-    private val _numberOfFollowers: MutableLiveData<Int> = MutableLiveData()
-    val numberOfFollowers: LiveData<Int> get() = _numberOfFollowers
-
-    private val _numberOfFollowing: MutableLiveData<Int> = MutableLiveData()
-    val numberOfFollowing: LiveData<Int> get() = _numberOfFollowing
+    private val _repositoryApi: MutableLiveData<List<GitRepositoryApiData>> =
+        MutableLiveData<List<GitRepositoryApiData>>()
+    val repositoryApi: LiveData<List<GitRepositoryApiData>> = _repositoryApi
 
     fun setUser(githubUser: String) {
-        if (_githubUser.value == githubUser) {
-            return
+        viewModelScope.launch {
+            try {
+                _githubUserApiData.value = UserApi.retrofitUser.getUserInfo(githubUser)
+                _followersApi.value = UserApi.retrofitUser.getFollowersInfo(githubUser)
+                _followingApi.value = UserApi.retrofitUser.getFollowingInfo(githubUser)
+                _repositoryApi.value = UserApi.retrofitUser.getRepoInfo(githubUser)
+            } catch (e: Exception) {
+
+            }
         }
-        _githubUser.value = githubUser
     }
+
 }

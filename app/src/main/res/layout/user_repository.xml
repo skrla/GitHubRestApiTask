@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="repository"
+            type="skrla.githubrestapi.data.models.GitRepositoryApiData" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/repository_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{repository.name}" />
+
+        <TextView
+            android:id="@+id/desctription_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{repository.description}" />
+
+        <TextView
+            android:id="@+id/git_url_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{repository.gitUrl}" />
+
+        <TextView
+            android:id="@+id/language_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{repository.language}" />
+
+    </LinearLayout>
+</layout>
