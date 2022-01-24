@@ -28,77 +28,129 @@
                 imageUrl="@{userDataFragment.githubUserApiData.profilePic}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_small"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="7dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/github_username_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_small"
+                android:textSize="@dimen/middle_size"
                 android:text="@{userDataFragment.githubUserApiData.username}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/profil_pic_img"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="68dp"
-                tools:layout_editor_absoluteY="201dp" />
+                tools:hint="Skrla"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/real_name_txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_small"
+                android:textSize="@dimen/info"
+                android:text="@string/real_name_txt"
+                app:layout_constraintStart_toEndOf="@id/profil_pic_img"
+                app:layout_constraintTop_toBottomOf="@id/github_username_txt"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/real_name_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_small"
                 android:text="@{userDataFragment.githubUserApiData.realName}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/profil_pic_img"
-                app:layout_constraintTop_toBottomOf="@id/github_username_txt"
-                tools:layout_editor_absoluteX="78dp"
-                tools:layout_editor_absoluteY="242dp" />
+                app:layout_constraintStart_toEndOf="@id/real_name_txt_view"
+                app:layout_constraintTop_toBottomOf="@id/github_username_txt"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bio_txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
+                android:text="@string/bio_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profil_pic_img" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/bio_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
                 android:text="@{userDataFragment.githubUserApiData.bio}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profil_pic_img"
-                tools:layout_editor_absoluteX="72dp"
-                tools:layout_editor_absoluteY="305dp" />
+                app:layout_constraintStart_toEndOf="@id/bio_txt_view"
+                app:layout_constraintTop_toBottomOf="@id/profil_pic_img" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/company_txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
+                android:text="@string/company_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bio_txt_view" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/company_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
                 android:text="@{userDataFragment.githubUserApiData.company}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bio_txt"
-                tools:layout_editor_absoluteX="136dp"
-                tools:layout_editor_absoluteY="433dp" />
+                app:layout_constraintStart_toEndOf="@id/company_txt_view"
+                app:layout_constraintTop_toBottomOf="@id/bio_txt" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/location_txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
+                android:text="@string/location_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/company_txt_view" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/location_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
                 android:text="@{userDataFragment.githubUserApiData.location}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/company_txt"
-                tools:layout_editor_absoluteX="65dp"
-                tools:layout_editor_absoluteY="446dp" />
+                app:layout_constraintStart_toEndOf="@id/location_txt_view"
+                app:layout_constraintTop_toBottomOf="@id/company_txt" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/email_txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
+                android:text="@string/email_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_txt_view"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/email_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/padding_very_small"
+                android:textSize="@dimen/small_size"
                 android:text="@{userDataFragment.githubUserApiData.email}"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location_txt"
-                tools:layout_editor_absoluteX="186dp"
-                tools:layout_editor_absoluteY="470dp" />
+                app:layout_constraintStart_toEndOf="@id/email_txt_view"
+                app:layout_constraintTop_toBottomOf="@id/location_txt" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/followers_recyclerView"

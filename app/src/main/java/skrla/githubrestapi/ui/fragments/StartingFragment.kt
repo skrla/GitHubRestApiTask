@@ -23,8 +23,9 @@ class StartingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentStartingBinding.inflate(inflater, container, false)
+
         binding.enterStartingBtn.setOnClickListener {
-            userViewModel.setUser(binding.enterUsernameNameEdit.text.toString())
+            userViewModel.setUser(binding.enterUsernameNameEdit.text.toString().trim())
             findNavController().navigate(R.id.action_startingFragment_to_userDataFragment)
         }
 
@@ -39,3 +40,5 @@ class StartingFragment : Fragment() {
     }
 
 }
+
+

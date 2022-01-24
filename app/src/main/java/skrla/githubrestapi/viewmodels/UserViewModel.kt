@@ -12,6 +12,7 @@ import skrla.githubrestapi.data.models.GitRepositoryApiData
 import skrla.githubrestapi.data.models.GithubUserApiData
 import skrla.githubrestapi.databinding.FragmentUserDataBinding
 
+
 class UserViewModel : ViewModel() {
 
     private var _binding: FragmentUserDataBinding? = null
@@ -19,7 +20,8 @@ class UserViewModel : ViewModel() {
 
     private val _githubUserApiData: MutableLiveData<GithubUserApiData> =
         MutableLiveData<GithubUserApiData>()
-    val githubUserApiData: LiveData<GithubUserApiData> = _githubUserApiData
+    val githubUserApiData: MutableLiveData<GithubUserApiData> = _githubUserApiData
+
 
     private val _followersApi: MutableLiveData<List<FollowersApiData>> =
         MutableLiveData<List<FollowersApiData>>()
@@ -40,10 +42,12 @@ class UserViewModel : ViewModel() {
                 _followersApi.value = UserApi.retrofitUser.getFollowersInfo(githubUser)
                 _followingApi.value = UserApi.retrofitUser.getFollowingInfo(githubUser)
                 _repositoryApi.value = UserApi.retrofitUser.getRepoInfo(githubUser)
+
             } catch (e: Exception) {
 
             }
         }
     }
+
 
 }

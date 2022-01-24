@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GitHub Rest Api Task</string>
+    <string name="GithubUsername">Username: </string>
+    <string name="appname">Github REST API</string>
+    <string name="username_hint">Enter username id</string>
+    <string name="btn_name">Enter</string>
+    <string name="real_name_txt">Real name:</string>
+    <string name="bio_info">Bio:</string>
+    <string name="company_info">Company:</string>
+    <string name="location_info">Location:</string>
+    <string name="email_info">Email:</string>
 </resources>
